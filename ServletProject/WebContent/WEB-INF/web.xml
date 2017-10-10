@@ -10,5 +10,26 @@
         <servlet-name>HelloWorld</servlet-name>
         <url-pattern>/HelloWorld</url-pattern>
     </servlet-mapping>
+    
+    <!-- 
+    <servlet>
+    <servlet-name>FormParametersServlet</servlet-name>
+    <servlet-class>com.coffee.hello.FormParametersServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FormParametersServlet</servlet-name>
+    <url-pattern>/formParametersServlet</url-pattern>
+  </servlet-mapping>
+   -->
+  <!-- 
+  <servlet>
+	  <servlet-name>FormParametersServlet2</servlet-name>
+	   <servlet-class>com.coffee.hello.FormParametersServlet2</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FormParametersServlet2</servlet-name>
+    <url-pattern>/formParametersServlet2</url-pattern>
+  </servlet-mapping>
+   -->
 	
 </web-app>
