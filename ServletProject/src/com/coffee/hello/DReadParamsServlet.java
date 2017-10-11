@@ -19,9 +19,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  */
 @WebServlet("/readParamsServlet")
-public class ReadParamsServlet extends HttpServlet {
+public class DReadParamsServlet extends HttpServlet {
 	
-	public ReadParamsServlet() {
+	public DReadParamsServlet() {
 		super();
 	}
 	

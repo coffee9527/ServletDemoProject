@@ -10,15 +10,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 /**
- * 通过Servlet获取表单中POST方式提交过来参数名和参数值
+ * 通过Servlet获取表单中GET方式提交过来参数名和参数值
+ * 
+ * Servlet 处理表单数据，这些数据会根据不同的情况使用不同的方法自动解析：
+ * getParameter(String args)：您可以调用 request.getParameter() 方法来获取表单参数的值。
+ * getParameterValues()：如果参数出现一次以上，则调用该方法，并返回多个值，例如复选框。
+ * getParameterNames(String args)：如果您想要得到当前请求中的所有参数的完整列表，则调用该方法。
+ * 
  * @author Administrator
  *
  */
-@WebServlet("/formParametersServlet2")
-public class FormParametersServlet2 extends HttpServlet {
+@WebServlet("/formParametersServlet")
+public class BFormParametersServlet extends HttpServlet {
 	private static final long serialVersionUID = 1l;
 	
-	public FormParametersServlet2() {
+	public BFormParametersServlet() {
 		super();
 	}
 	
@@ -38,28 +44,31 @@ public class FormParametersServlet2 extends HttpServlet {
 	 */
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// 设置响应内容类型
-        resp.setContentType("text/html;charset=UTF-8");
-        //中文乱码，设置请求数据的编码类型
-        req.setCharacterEncoding("utf-8"); 
-
-        PrintWriter out = resp.getWriter();
-        String title = "读取复选框数据";
-        String docType = "<!DOCTYPE html> \n";
-            out.println(docType +
-                "<html>\n" +
-                "<head><title>" + title + "</title></head>\n" +
-                "<body bgcolor=\"#f0f0f0\">\n" +
-                "<h1 align=\"center\">" + title + "</h1>\n" +
-                "<ul>\n" +
-                "  <li><b>菜鸟按教程标识：</b>: "
-                + req.getParameter("runoob") + "\n" +
-                "  <li><b>Google 标识：</b>: "
-                + req.getParameter("google") + "\n" +
-                "  <li><b>淘宝标识：</b>: "
-                + req.getParameter("taobao") + "\n" +
-                "</ul>\n" +
-                "</body></html>");
+		//设置响应内容类型,get请求要设置相应类型和编码
+		resp.setContentType("text/html;charset=utf-8");
+		//req.setCharacterEncoding("utf-8"); 
+		//resp.setContentType("text/html;charset=utf-8"); 
+		//resp.setCharacterEncoding("utf-8"); 
+		
+		PrintWriter out = resp.getWriter();
+		String title = "使用GET方法读取表单数据";
+		//处理中文
+		//System.out.println(req.getParameter("name"));
+		//String name = new String(req.getParameter("name").getBytes("iso-8859-1"),"utf-8");
+		String name = req.getParameter("name");
+		String docType = "<!DOCTYPE html> \n";
+		 out.println(docType +
+		            "<html>\n" +
+		            "<head><title>" + title + "</title></head>\n" +
+		            "<body bgcolor=\"#f0f0f0\">\n" +
+		            "<h1 align=\"center\">" + title + "</h1>\n" +
+		            "<ul>\n" +
+		            "  <li><b>站点名</b>："
+		            + name + "\n" +
+		            "  <li><b>网址</b>："
+		            + req.getParameter("url") + "\n" +
+		            "</ul>\n" +
+		            "</body></html>");
 	}
 	
 	@Override
